@@ -1,7 +1,7 @@
 FROM fuzzers/afl:2.52 as builder
 
 RUN apt-get update
-RUN apt install -y build-essential wget git clang cmake zlib1g zlib1g-dev autotools-dev autoconf libgd-dev libmad0-dev libid3tag0-dev libsndfile1-dev libgd3 libgd-dev \
+RUN apt install -y build-essential wget git clang cmake zlib1g zlib1g-dev autotools-dev autoconf libmad0-dev libid3tag0-dev libsndfile1-dev libgd3 libgd-dev \
 libboost-filesystem-dev libboost-program-options-dev   libboost-regex-dev
 RUN git clone https://github.com/bbc/audiowaveform.git
 WORKDIR /audiowaveform

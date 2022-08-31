@@ -3,16 +3,10 @@
 # Format: YAML 1.1
 
 # Project name that the target belongs to
-project: baptistapedro/audiowaveform-fuzz
+project: audiowaveform
 
 # Target name (should be unique within the project)
-target: audiowaveform-fuzz-2
-
-# Base image to run the binary in.
-image: pedbap/audiowaveform-fuzz:2
-
-# Turns on extra test case processing (completing a run will take longer)
-advanced_triage: false
+target: audiowaveform
 
 # List of commands used to test the target
 cmds:
@@ -21,27 +15,3 @@ cmds:
   # (when "@@" is omitted Mayhem defaults to stdin inputs)
   - cmd: /audiowaveform/audiowaveform -i trailing-garbage.mp3 -o out.wav
     filepath: trailing-garbage.mp3
-    ## Uncomment to change default dir (/) from which the target is invoked
-    #cwd: /
-
-    ## Uncomment the block below to define environment variables
-    #env:
-    #  MY_ENV_VAR: MY_ENV_VALUE
-
-    ## If this is a network target, uncomment the block below and remove
-    ## the @@ input file reference in the cmd (you can either test network or
-    ## file inputs, not both).
-    #network:
-    ## Use "127.0.0.1" instead of "localhost" below if you want to test only
-    ## for IPv4. For IPv6, use "[::1]". By leaving as "localhost", Mayhem will
-    ## attempt to autodetect the one used by the target.
-    #  url: tcp://localhost:8080  # protocol, host and port to analyze
-    #  client: False           # target is a client-side program
-    #  timeout: 2.0               # max seconds for sending data
-
-    ## Max test case length (in bytes) to be taken into account. Test cases over
-    ## that length will be truncated. Be very careful about increasing this
-    ## limit as it can severely affect your fuzzer performance.
-    # max_length: 8192
-tests:
-  - https://mayhem.forallsecure.com/baptistapedro/audiowaveform-fuzz/audiowaveform-fuzz-2/tests.tar

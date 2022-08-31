@@ -17,10 +17,6 @@ RUN wget https://chromium.googlesource.com/chromium/src/+/lkgr/media/test/data/i
 RUN wget https://chromium.googlesource.com/chromium/src/+/lkgr/media/test/data/midstream_config_change.mp3
 RUN mv *.mp3 /audiowaveformCorpus
 
-FROM fuzzers/afl:2.52
-COPY --from=builder /audiowaveformCorpus /testsuite
-COPY --from=builder /audiowaveform
-
 
 ENTRYPOINT ["afl-fuzz", "-i", "/audiowaveformCorpus", "-o", "/audiowaveformOut"]
 CMD ["/audiowaveform/audiowaveform", "-i", "@@", "-o", "out.wav"]

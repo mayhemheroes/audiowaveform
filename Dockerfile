@@ -1,4 +1,4 @@
-FROM fuzzers/afl:2.52 as builder
+FROM fuzzers/afl:2.52
 
 RUN apt-get update
 RUN apt install -y build-essential wget git clang cmake zlib1g zlib1g-dev autotools-dev autoconf libmad0-dev libid3tag0-dev libsndfile1-dev libgd3 libgd-dev \

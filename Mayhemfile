@@ -1,17 +1,6 @@
-# Mayhem by https://forallsecure.com
-# Mayhemfile: configuration file for testing your target with Mayhem
-# Format: YAML 1.1
-
-# Project name that the target belongs to
 project: audiowaveform
-
-# Target name (should be unique within the project)
 target: audiowaveform
 
-# List of commands used to test the target
 cmds:
-
-  # Command used to start the target, "@@" is the input file
-  # (when "@@" is omitted Mayhem defaults to stdin inputs)
-  - cmd: /audiowaveform/audiowaveform -i trailing-garbage.mp3 -o out.wav
-    filepath: trailing-garbage.mp3
+  - cmd: audiowaveform -i @@ -o /dev/null
+    #filepath: trailing-garbage.mp3

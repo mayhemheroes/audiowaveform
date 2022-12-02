@@ -1,4 +1,4 @@
-FROM fuzzers/afl:2.52
+FROM fuzzers/afl:2.52 as builder
 
 RUN apt-get update
 RUN apt install -y build-essential wget git clang cmake zlib1g zlib1g-dev autotools-dev autoconf libmad0-dev libid3tag0-dev libsndfile1-dev libgd3 libgd-dev \
@@ -17,6 +17,9 @@ RUN wget https://chromium.googlesource.com/chromium/src/+/lkgr/media/test/data/i
 RUN wget https://chromium.googlesource.com/chromium/src/+/lkgr/media/test/data/midstream_config_change.mp3
 RUN mv *.mp3 /audiowaveformCorpus
 
+FROM fuzzers/afl:2.52
+COPY --from=builder /audiowaveform/audiowaveform /
+COPY --from=builder /audiowaveformCorpus/*.mp3 /testsuite/
 
-ENTRYPOINT ["afl-fuzz", "-i", "/audiowaveformCorpus", "-o", "/audiowaveformOut"]
-CMD ["/audiowaveform/audiowaveform", "-i", "@@", "-o", "out.wav"]
+ENTRYPOINT ["afl-fuzz", "-i", "/testsuite/", "-o", "/audiowaveformOut"]
+CMD ["/audiowaveform", "-i", "@@", "-o", "/dev/null"]

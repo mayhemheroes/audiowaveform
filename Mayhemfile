@@ -2,5 +2,5 @@ project: audiowaveform
 target: audiowaveform
 
 cmds:
-  - cmd: audiowaveform -i @@ -o /dev/null
+  - cmd: /audiowaveform -i @@ -o /dev/null
     #filepath: trailing-garbage.mp3

@@ -5,8 +5,7 @@ RUN apt install -y build-essential wget git clang cmake zlib1g zlib1g-dev autoto
 libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libgtest-dev
 ADD . /audiowaveform
 WORKDIR /audiowaveform
-ADD . /googletest
-RUN cmake -DCMAKE_C_COMPILER=afl-clang -DCMAKE_CXX_COMPILER=afl-clang++ -DBUILD_SHARED_LIBS=true -DCMAKE_INSTALL_PREFIX:PATH=/audiowaveform/install .
+RUN cmake -DENABLE_TESTS=OFF -DCMAKE_C_COMPILER=afl-clang -DCMAKE_CXX_COMPILER=afl-clang++ -DBUILD_SHARED_LIBS=true -DCMAKE_INSTALL_PREFIX:PATH=/audiowaveform/install .
 RUN make
 RUN make install
 RUN mkdir /audiowaveformCorpus

@@ -1,0 +1,7 @@
+project: audiowaveform
+target: audiowaveform
+
+cmds:
+  - cmd: /audiowaveform /audiowaveform -i trailing-garbage.mp3 -o out.wav 
+    filepath: trailing-garbage.mp3
+
